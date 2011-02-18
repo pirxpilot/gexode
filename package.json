@@ -1,0 +1,15 @@
+{
+  "name" : "gexode",
+  "description" : "Primitive XML generator for node.js",
+  "keywords": ["xml"],
+  "version" : "0.0.1",
+  "author" : "Damian Krzeminski <pirxpilot@code42day.org>",
+  "engines" : {"node" : ">=0.2.0"}, 
+  "main" : "lib/index.js",
+  "directories" : { "lib" : "./lib" },
+  "repositories" : [
+    { "type":"git", "url":"http://github.com/pirxpilot/gexode.git" }
+  ],
+  "devDependencies" : { "expresso" : "*"},
+  "scripts" : { "test" : "expresso test" }   
+}
