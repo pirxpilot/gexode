@@ -1,6 +1,8 @@
 
 var assert = require('assert'),
-  elem = require('../lib').elem;
+  gexode = require('../lib'),
+  doc = gexode.doc,
+  elem = gexode.elem;
 
 function buffer(s) {
   var self, str = s || '';
@@ -26,6 +28,15 @@ module.exports = {
     a = elem('klm');
     a.write(b);
     assert.equal('<klm></klm>', b.toString());
+  },
+
+  'doc': function () {
+    var a, b = buffer();
+
+    a = doc(elem('klm').text('bongo'));
+    a.write(b);
+    assert.equal("<?xml version='1.0' encoding='UTF-8'?>\n" +
+      "<klm>bongo</klm>", b.toString());
   },
 
   'attrs': function () {
@@ -66,9 +77,8 @@ module.exports = {
     car.write(b);
 
     assert.equal("<volvo type='sedan'>" +
-    		"<driver name='Betty'></driver>" +
-    		"<passanger age='17'>Adam</passanger>" +
-    		"</volvo>", b.toString());
+      "<driver name='Betty'></driver>" +
+      "<passanger age='17'>Adam</passanger>" +
+      "</volvo>", b.toString());
   }
-
 };
