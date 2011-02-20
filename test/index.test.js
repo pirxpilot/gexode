@@ -80,5 +80,14 @@ module.exports = {
       "<driver name='Betty'></driver>" +
       "<passanger age='17'>Adam</passanger>" +
       "</volvo>", b.toString());
+  },
+
+  'escape': function() {
+    var a = elem('car').text('AT&T 2 > 1 < 3 > 2\n"Tricky\'s"'),
+      b = buffer();
+
+    a.write(b);
+    assert.equal("<car>AT&amp;T 2 &gt; 1 &lt; 3 &gt; 2\n" +
+      "&quot;Tricky&apos;s&quot;</car>", b.toString());
   }
 };
