@@ -48,7 +48,7 @@ module.exports = {
     });
     a.write(b);
 
-    assert.equal("<klm name='kuku' value='5'></klm>", b.toString());
+    assert.equal('<klm name="kuku" value="5"></klm>', b.toString());
   },
 
   'text': function () {
@@ -61,7 +61,7 @@ module.exports = {
 
     a.write(b);
 
-    assert.equal("<klm name='kuku'>bongo bongo</klm>", b.toString());
+    assert.equal('<klm name="kuku">bongo bongo</klm>', b.toString());
   },
 
   'children': function () {
@@ -72,14 +72,14 @@ module.exports = {
     });
 
     car.add(elem('driver', { name: 'Betty' }));
-    car.add(elem('passanger', { age: '17' }).text('Adam'));
+    car.add(elem('passenger', { age: '17' }).text('Adam'));
 
     car.write(b);
 
-    assert.equal("<volvo type='sedan'>" +
-      "<driver name='Betty'></driver>" +
-      "<passanger age='17'>Adam</passanger>" +
-      "</volvo>", b.toString());
+    assert.equal('<volvo type="sedan">' +
+      '<driver name="Betty"></driver>' +
+      '<passenger age="17">Adam</passenger>' +
+      '</volvo>', b.toString());
   },
 
   'escape': function() {
