@@ -4,7 +4,7 @@
   "keywords": [
     "xml"
   ],
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "Damian Krzeminski <pirxpilot@code42day.org>",
   "engines": {
     "node": ">=0.2.0"
