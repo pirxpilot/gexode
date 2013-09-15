@@ -17,8 +17,8 @@
     }
   ],
   "devDependencies": {
-    "expresso": "*",
-    "jshint": "~2"
+    "jshint": "~2",
+    "mocha": "~1"
   },
   "scripts": {
     "test": "make test"
