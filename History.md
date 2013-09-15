@@ -1,4 +1,10 @@
 
+0.1.0 / 2013-09-15 
+==================
+
+ * Use mocha instead of expresso
+ * Modernize Readme.md and package.json
+
 0.0.3 / 2013-09-13 
 ==================
 
