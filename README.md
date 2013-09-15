@@ -5,7 +5,7 @@
 
 Primitive XML generator for node.js
 
-Example:
+## Example
 
 ```javascript
 var gexode = require(gexode), doc = gexode.doc, elem = gexode.elem;
@@ -20,3 +20,7 @@ renders as:
 <?xml version='1.0' encoding='UTF-8'?>
 <car wheels='4'>Volvo</car>
 ```
+
+## License
+
+MIT
