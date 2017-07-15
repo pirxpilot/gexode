@@ -21,5 +21,8 @@
   "devDependencies": {
     "jshint": "~2",
     "mocha": "~3"
-  }
+  },
+  "files": [
+    "lib"
+  ]
 }
