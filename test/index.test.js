@@ -85,6 +85,25 @@ module.exports = {
       '</volvo>', b.toString());
   },
 
+  'pretty': function () {
+    var car, b = buffer();
+
+    car = elem('volvo', {
+      type: 'sedan'
+    });
+
+    car.add(elem('driver', { name: 'Betty' }));
+    car.add(elem('passenger', { age: '17' }).text('Adam'));
+
+    car.write(stream(b, { pretty: true }));
+
+    assert.equal('<volvo type="sedan">\n' +
+      '  <driver name="Betty"/>\n' +
+      '  <passenger age="17">\n    Adam\n  </passenger>\n' +
+      '</volvo>\n', b.toString());
+  },
+
+
   'escape': function() {
     var a = elem('car').text('AT&T 2 > 1 < 3 > 2\n"Tricky\'s"'),
       b = buffer();
