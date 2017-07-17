@@ -75,7 +75,7 @@ module.exports = {
     });
 
     car.add(elem('driver', { name: 'Betty' }));
-    car.add(elem('passenger', { age: '17' }).text('Adam'));
+    car.add(elem('passenger', { age: '17', height: undefined }).text('Adam'));
 
     car.write(stream(b));
 
