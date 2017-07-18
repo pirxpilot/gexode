@@ -38,7 +38,7 @@ module.exports = {
 
     a = doc(elem('klm').text('bongo'));
     a.write(b);
-    assert.equal("<?xml version='1.0' encoding='UTF-8'?>\n" +
+    assert.equal('<?xml version="1.0" encoding="utf-8" ?>\n' +
       "<klm>bongo</klm>", b.toString());
   },
 
