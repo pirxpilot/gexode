@@ -1,8 +1,11 @@
 
-var assert = require('assert'),
-  gexode = require('../lib'),
+var assert = require('assert');
+var stream = require('../lib/stream');
+
+var gexode = require('../lib'),
   doc = gexode.doc,
-  elem = gexode.elem;
+  elem = gexode.elem,
+  stream = gexode.stream;
 
 function buffer(s) {
   var self, str = s || '';
@@ -26,8 +29,10 @@ module.exports = {
     var a, b = buffer();
 
     a = elem('klm');
-    a.write(b);
-    assert.equal('<klm></klm>', b.toString());
+    a.write(stream(b, {
+      selfClosing: true
+    }));
+    assert.equal('<klm/>', b.toString());
   },
 
   'doc': function () {
@@ -35,7 +40,7 @@ module.exports = {
 
     a = doc(elem('klm').text('bongo'));
     a.write(b);
-    assert.equal("<?xml version='1.0' encoding='UTF-8'?>\n" +
+    assert.equal('<?xml version="1.0" encoding="utf-8" ?>\n' +
       "<klm>bongo</klm>", b.toString());
   },
 
@@ -46,9 +51,11 @@ module.exports = {
       name: 'kuku',
       value: 5
     });
-    a.write(b);
+    a.write(stream(b, {
+      selfClosing: true
+    }));
 
-    assert.equal('<klm name="kuku" value="5"></klm>', b.toString());
+    assert.equal('<klm name="kuku" value="5"/>', b.toString());
   },
 
   'text': function () {
@@ -59,7 +66,7 @@ module.exports = {
     });
     a.text('bongo bongo');
 
-    a.write(b);
+    a.write(stream(b));
 
     assert.equal('<klm name="kuku">bongo bongo</klm>', b.toString());
   },
@@ -72,9 +79,9 @@ module.exports = {
     });
 
     car.add(elem('driver', { name: 'Betty' }));
-    car.add(elem('passenger', { age: '17' }).text('Adam'));
+    car.add(elem('passenger', { age: '17', height: undefined }).text('Adam'));
 
-    car.write(b);
+    car.write(stream(b));
 
     assert.equal('<volvo type="sedan">' +
       '<driver name="Betty"></driver>' +
@@ -82,11 +89,33 @@ module.exports = {
       '</volvo>', b.toString());
   },
 
+  'pretty': function () {
+    var car, b = buffer();
+
+    car = elem('volvo', {
+      type: 'sedan'
+    });
+
+    car.add(elem('driver', { name: 'Betty' }));
+    car.add(elem('passenger', { age: '17' }).text('Adam'));
+
+    car.write(stream(b, {
+      pretty: true,
+      selfClosing: true
+    }));
+
+    assert.equal('<volvo type="sedan">\n' +
+      '  <driver name="Betty"/>\n' +
+      '  <passenger age="17">Adam</passenger>\n' +
+      '</volvo>\n', b.toString());
+  },
+
+
   'escape': function() {
     var a = elem('car').text('AT&T 2 > 1 < 3 > 2\n"Tricky\'s"'),
       b = buffer();
 
-    a.write(b);
+    a.write(stream(b));
     assert.equal("<car>AT&amp;T 2 &gt; 1 &lt; 3 &gt; 2\n" +
       "&quot;Tricky&apos;s&quot;</car>", b.toString());
   }
