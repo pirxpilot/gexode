@@ -1,4 +1,13 @@
 
+1.0.0 / 2017-07-17
+==================
+
+ * add streaming API
+ * add selfClosing and pretty options
+ * adjust header formating to be compatible with Jade
+ * allow non strings as node text
+ * ignore attributes with undefined values
+
 0.1.0 / 2013-09-15 
 ==================
 
