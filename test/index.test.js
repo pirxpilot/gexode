@@ -29,7 +29,9 @@ module.exports = {
     var a, b = buffer();
 
     a = elem('klm');
-    a.write(stream(b));
+    a.write(stream(b, {
+      selfClosing: true
+    }));
     assert.equal('<klm/>', b.toString());
   },
 
@@ -49,7 +51,9 @@ module.exports = {
       name: 'kuku',
       value: 5
     });
-    a.write(stream(b));
+    a.write(stream(b, {
+      selfClosing: true
+    }));
 
     assert.equal('<klm name="kuku" value="5"/>', b.toString());
   },
@@ -80,7 +84,7 @@ module.exports = {
     car.write(stream(b));
 
     assert.equal('<volvo type="sedan">' +
-      '<driver name="Betty"/>' +
+      '<driver name="Betty"></driver>' +
       '<passenger age="17">Adam</passenger>' +
       '</volvo>', b.toString());
   },
@@ -95,11 +99,14 @@ module.exports = {
     car.add(elem('driver', { name: 'Betty' }));
     car.add(elem('passenger', { age: '17' }).text('Adam'));
 
-    car.write(stream(b, { pretty: true }));
+    car.write(stream(b, {
+      pretty: true,
+      selfClosing: true
+    }));
 
     assert.equal('<volvo type="sedan">\n' +
       '  <driver name="Betty"/>\n' +
-      '  <passenger age="17">\n    Adam\n  </passenger>\n' +
+      '  <passenger age="17">Adam</passenger>\n' +
       '</volvo>\n', b.toString());
   },
 
