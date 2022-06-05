@@ -1,6 +1,6 @@
-[![Build Status](https://secure.travis-ci.org/pirxpilot/gexode.png)](http://travis-ci.org/pirxpilot/gexode)
-[![Dependency Status](https://david-dm.org/pirxpilot/gexode.png)](https://david-dm.org/pirxpilot/gexode)
-[![NPM version](https://badge.fury.io/js/gexode.png)](http://badge.fury.io/js/gexode)
+[![NPM version][npm-image]][npm-url]
+[![Build Status][build-image]][build-url]
+[![Dependency Status][deps-image]][deps-url]
 
 # gexode
 
@@ -65,3 +65,12 @@ renders as:
 ## License
 
 MIT
+
+[npm-image]: https://img.shields.io/npm/v/gexode
+[npm-url]: https://npmjs.org/package/gexode
+
+[build-url]: https://github.com/pirxpilot/gexode/actions/workflows/check.yaml
+[build-image]: https://img.shields.io/github/workflow/status/pirxpilot/gexode/check
+
+[deps-image]: https://img.shields.io/librariesio/release/npm/gexode
+[deps-url]: https://libraries.io/npm/gexode

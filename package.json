@@ -6,10 +6,7 @@
   "scripts": {
     "test": "make test"
   },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:pirxpilot/gexode.git"
-  },
+  "repository": "pirxpilot/gexode",
   "keywords": [
     "xml"
   ],
