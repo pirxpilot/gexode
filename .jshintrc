@@ -1,13 +1,18 @@
 {
-  "undef": "true",
-  "unused": "true",
-  "laxbreak": "true",
-  "globals": {
-    "console": false,
-    "exports": false,
-    "process": false,
-    "require": false,
-    "module": false,
-    "__dirname": false
-  }
+  "bitwise": true,
+  "curly": true,
+  "eqeqeq": true,
+  "eqnull": true,
+  "forin": true,
+  "latedef": "nofunc",
+  "loopfunc": false,
+  "noarg": true,
+  "nonbsp": true,
+  "nonew": true,
+  "notypeof": true,
+  "undef": true,
+  "unused": true,
+  "laxbreak": true,
+  "browserify": true,
+  "esversion": 10
 }

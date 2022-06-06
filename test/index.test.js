@@ -1,22 +1,22 @@
-
-var assert = require('assert');
+const assert = require('assert');
 var stream = require('../lib/stream');
 
-var gexode = require('../lib'),
-  doc = gexode.doc,
-  elem = gexode.elem,
-  stream = gexode.stream;
+const gexode = require('../lib');
+const doc = gexode.doc;
+const elem = gexode.elem;
+var stream = gexode.stream;
 
 function buffer(s) {
-  var self, str = s || '';
+  let self;
+  let str = s || '';
 
   self = {
-    write: function (s) {
+    write(s) {
       str = str.concat(s);
       return str.length;
     },
 
-    toString: function () {
+    toString() {
       return str;
     }
   };
@@ -26,7 +26,8 @@ function buffer(s) {
 
 module.exports = {
   'simple': function () {
-    var a, b = buffer();
+    let a;
+    const b = buffer();
 
     a = elem('klm');
     a.write(stream(b, {
@@ -36,7 +37,8 @@ module.exports = {
   },
 
   'doc': function () {
-    var a, b = buffer();
+    let a;
+    const b = buffer();
 
     a = doc(elem('klm').text('bongo'));
     a.write(b);
@@ -45,7 +47,8 @@ module.exports = {
   },
 
   'attrs': function () {
-    var a, b = buffer();
+    let a;
+    const b = buffer();
 
     a = elem('klm', {
       name: 'kuku',
@@ -59,7 +62,8 @@ module.exports = {
   },
 
   'text': function () {
-    var a, b = buffer();
+    let a;
+    const b = buffer();
 
     a = elem('klm', {
       name: 'kuku'
@@ -72,7 +76,8 @@ module.exports = {
   },
 
   'children': function () {
-    var car, b = buffer();
+    let car;
+    const b = buffer();
 
     car = elem('volvo', {
       type: 'sedan'
@@ -90,7 +95,8 @@ module.exports = {
   },
 
   'pretty': function () {
-    var car, b = buffer();
+    let car;
+    const b = buffer();
 
     car = elem('volvo', {
       type: 'sedan'
@@ -111,9 +117,9 @@ module.exports = {
   },
 
 
-  'escape': function() {
-    var a = elem('car').text('AT&T 2 > 1 < 3 > 2\n"Tricky\'s"'),
-      b = buffer();
+  'escape': function () {
+    const a = elem('car').text('AT&T 2 > 1 < 3 > 2\n"Tricky\'s"');
+    const b = buffer();
 
     a.write(stream(b));
     assert.equal("<car>AT&amp;T 2 &gt; 1 &lt; 3 &gt; 2\n" +
