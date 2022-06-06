@@ -9,10 +9,9 @@ Primitive XML generator for node.js
 ## Example
 
 ```js
-var gexode = require(gexode), doc = gexode.doc, elem = gexode.elem;
-
-var car = doc(elem('car', {wheels: 4}).text('Volvo'));
-car.write(out);
+const { doc, elem } = require(gexode);
+const car = doc(elem('car', {wheels: 4}).text('Volvo'));
+car.toString();
 ```
 
 renders as:
@@ -23,18 +22,22 @@ renders as:
 ```
 
 
-## Streaming mode
+## Generator mode
 
-`gexode` can be also used in streaming mode
+`gexode` can also be used as a generator
 
 ```js
-var gexodeStream = require('gexode').stream;
-var xml = gexodeStream(writeableStream);
+const { generator } = require('gexode');
+const { header, start, el, end } = generator({ pretty: true });
 
-xml.header();
-xml.start('cars');
-xml.el('car', {wheels: 4}, 'Volvo');
-xml.end();
+function* cars() {
+  yield* header();
+  yield* start('cars');
+  yield* el('car', { wheels: 4 }, 'Volvo');
+  yield* end();
+}
+
+Array.from(cars()).join('');
 
 ```
 
@@ -43,23 +46,22 @@ renders as:
 ```xml
 <?xml version='1.0' encoding='UTF-8'?>
 <cars>
-<car wheels='4'>Volvo</car>
+  <car wheels='4'>Volvo</car>
 </cars>
 ```
 
 
 ### API
 
-`stream(out, options)`
-- `out` is a writeble stream (network response, file etc.)
+`generator(options)`
 - `options` - `{ pretty, selfClosing }`
   if `pretty` is truthy intendations are generate
   if `selfClosing` is truthy empty tags are self closeing `<likeThis/>`
 
-- `stream.header` - generate XML header
-- `stream.el(name, attribute, text)`- generate a node with attributes (optional) and text (optional), close the node automatically
-- `stream.start(name, attribute)`- like `el` but do not close the node
-- `stream.end` - close recently opened node
+- `header` - generate XML header
+- `el(name, attribute, text)`- generate a node with attributes (optional) and text (optional), close the node automatically
+- `start(name, attribute)`- like `el` but do not close the node
+- `end` - close recently opened node
 
 
 ## License
