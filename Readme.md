@@ -72,7 +72,7 @@ MIT
 [npm-url]: https://npmjs.org/package/gexode
 
 [build-url]: https://github.com/pirxpilot/gexode/actions/workflows/check.yaml
-[build-image]: https://img.shields.io/github/workflow/status/pirxpilot/gexode/check
+[build-image]: https://img.shields.io/github/actions/workflow/status/pirxpilot/gexode/check.yaml?branch=main
 
 [deps-image]: https://img.shields.io/librariesio/release/npm/gexode
 [deps-url]: https://libraries.io/npm/gexode
