@@ -1,5 +1,5 @@
 import test from 'node:test';
-import { doc, elem } from '../index.js';
+import { doc, elem, generator } from '../index.js';
 
 test('simple', t => {
   const a = elem('klm');
@@ -80,4 +80,48 @@ test('escape', t => {
       '&quot;Tricky&apos;s&quot;</car>',
     a.toString()
   );
+});
+
+test('generator', t => {
+  const { header, start, el, end } = generator();
+
+  function* cars() {
+    yield* header();
+    yield* start('cars');
+    yield* el('car', { wheels: 4 }, 'Volvo');
+    yield* end();
+  }
+
+  const it = cars();
+  t.assert.equal(it.next().value, '<?xml version="1.0" encoding="utf-8" ?>\n');
+  t.assert.equal(it.next().value, '<cars>');
+  t.assert.equal(it.next().value, '<car wheels="4"');
+  t.assert.equal(it.next().value, '>');
+  t.assert.equal(it.next().value, 'Volvo');
+  t.assert.equal(it.next().value, '</car>');
+  t.assert.equal(it.next().value, '');
+  t.assert.equal(it.next().value, '</cars>');
+  t.assert.equal(it.next().done, true);
+});
+
+test('pretty generator', t => {
+  const { header, start, el, end } = generator({ pretty: true });
+
+  function* cars() {
+    yield* header();
+    yield* start('cars');
+    yield* el('car', { wheels: 4 }, 'Volvo');
+    yield* end();
+  }
+
+  const it = cars();
+  t.assert.equal(it.next().value, '<?xml version="1.0" encoding="utf-8" ?>\n');
+  t.assert.equal(it.next().value, '<cars>\n');
+  t.assert.equal(it.next().value, '  <car wheels="4"');
+  t.assert.equal(it.next().value, '>');
+  t.assert.equal(it.next().value, 'Volvo');
+  t.assert.equal(it.next().value, '</car>\n');
+  t.assert.equal(it.next().value, '');
+  t.assert.equal(it.next().value, '</cars>\n');
+  t.assert.equal(it.next().done, true);
 });
