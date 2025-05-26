@@ -1,6 +1,6 @@
 {
   "name": "gexode",
-  "version": "2.0.1",
+  "version": "3.0.0",
   "description": "Primitive XML generator for node.js",
   "type": "module",
   "exports": "./indes.js",
