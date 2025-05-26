@@ -2,7 +2,7 @@
   "name": "gexode",
   "version": "2.0.1",
   "description": "Primitive XML generator for node.js",
-  "main": "lib/index.js",
+  "exports": "./indes.js",
   "scripts": {
     "test": "make test"
   },
@@ -22,6 +22,7 @@
     "@biomejs/biome": "^1.9.4"
   },
   "files": [
+    "index.js",
     "lib"
   ]
 }

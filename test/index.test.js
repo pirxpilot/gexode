@@ -1,8 +1,6 @@
 const test = require('node:test');
 
-const gexode = require('../lib');
-const doc = gexode.doc;
-const elem = gexode.elem;
+const { doc, elem } = require('..');
 
 test('simple', t => {
   const a = elem('klm');
