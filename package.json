@@ -6,7 +6,10 @@
   "scripts": {
     "test": "make test"
   },
-  "repository": "pirxpilot/gexode",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pirxpilot/gexode.git"
+  },
   "keywords": [
     "xml"
   ],
@@ -16,8 +19,7 @@
     "url": "https://github.com/pirxpilot/gexode/issues"
   },
   "devDependencies": {
-    "jshint": "~2",
-    "mocha": "~10"
+    "@biomejs/biome": "^1.9.4"
   },
   "files": [
     "lib"
