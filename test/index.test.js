@@ -1,6 +1,5 @@
-const test = require('node:test');
-
-const { doc, elem } = require('..');
+import test from 'node:test';
+import { doc, elem } from '../index.js';
 
 test('simple', t => {
   const a = elem('klm');

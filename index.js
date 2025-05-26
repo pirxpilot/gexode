@@ -1,12 +1,8 @@
-const generator = require('./lib/generator');
+import generator from './lib/generator.js';
 
-module.exports = {
-  elem,
-  doc,
-  generator
-};
+export { generator };
 
-function elem(name, attrs = {}) {
+export function elem(name, attrs = {}) {
   const self = {
     strings,
     toString,
@@ -53,7 +49,7 @@ function elem(name, attrs = {}) {
   return self;
 }
 
-function doc(root) {
+export function doc(root) {
   const my = {
     root
   };

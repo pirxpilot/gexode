@@ -27,7 +27,8 @@ renders as:
 `gexode` can also be used as a generator
 
 ```js
-const { generator } = require('gexode');
+import { generator } from 'gexode';
+
 const { header, start, el, end } = generator({ pretty: true });
 
 function* cars() {
