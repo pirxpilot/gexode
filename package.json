@@ -2,11 +2,15 @@
   "name": "gexode",
   "version": "2.0.1",
   "description": "Primitive XML generator for node.js",
-  "main": "lib/index.js",
+  "type": "module",
+  "exports": "./indes.js",
   "scripts": {
     "test": "make test"
   },
-  "repository": "pirxpilot/gexode",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pirxpilot/gexode.git"
+  },
   "keywords": [
     "xml"
   ],
@@ -16,10 +20,10 @@
     "url": "https://github.com/pirxpilot/gexode/issues"
   },
   "devDependencies": {
-    "jshint": "~2",
-    "mocha": "~10"
+    "@biomejs/biome": "^1.9.4"
   },
   "files": [
+    "index.js",
     "lib"
   ]
 }
